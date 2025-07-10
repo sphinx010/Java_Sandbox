@@ -18,6 +18,12 @@ The Rectangle Class is a class that births rectangles
 it will have properties (values) and methods (metrics):
 Values: Length, Breadth or Width,
 Metrics: Area = L x W, Perimeter = 2 x (L + W)
+i also learned how the scanner object behaves when scanning tokens (words, numbers, lines)
+from methods such as:
+next(): what it reads: it'll read a single word (stop at space/newline)
+what it leaves: leaves the (\n) newline behind,
+nextInt() & nextDouble(): Reads a number but leaves the (\n) newline behind,
+hence the reason for the scanner.nextLine() resolve,  which leads the scanner object away from the space/newline.
  */
 public class Rectangle {
    static Scanner scanner = new Scanner(System.in);
