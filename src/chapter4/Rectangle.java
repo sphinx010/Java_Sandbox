@@ -30,37 +30,59 @@ public class Rectangle {
     public static void main (String[] args){
         String again;
         do {
-            System.out.println("Enter the values of your Rectangle, what's its length ?");
-            double length = scanner.nextDouble();
-            System.out.println("And its width ?");
-            double width = scanner.nextDouble();
-            Rectangle myRectangle = new Rectangle(length, width);
-            double perimeter = Math.ceil(myRectangle.calculatePerimeter(length,width));
+            Rectangle myRectangle = new Rectangle();
+            double perimeter = Math.ceil(myRectangle.calculatePerimeter());
             System.out.println("Here are the properties of your Rectangle: " + "\n" +
-                    "Length: " +length + "\n" +
-                    "Width: " +width + "\n" +
+                    "Length: " +myRectangle.length + "\n" +
+                    "Width: " +myRectangle.width + "\n" +
                     "Perimeter: " +perimeter);
             System.out.println("DO YOU WANT TO GIVE IT ANOTHER TRY (Yes / No) ?");
             scanner.nextLine();
             again = scanner.nextLine().toLowerCase();
         }while (again.equals("yes"));
     }
-   private double length;
-    private double width;
+   private double length = getLength();
+    private double width = getWidth();
 
 
-    public Rectangle (double length, double width){
-        this.length = length;
-        this.width = width;
+//new change - 9:10pm 11th July
+    /*
+    --------
+    create a default type constructor for empty initialisation
+    create two methods:
+    Getter and Setter
+    Gets values, Sets values
+    focused on encapsulation
+    Removed redundancy: the methods were called too many times
+    --------
+     */
+
+    //Default constructor
+    public Rectangle(){
+
     }
 
-    public double calculateArea (double length, double width){
+    //gets length
+    public double getLength(){
+        System.out.println("Enter the values of your Rectangle, what's its length ?");
+        double length = scanner.nextDouble();
+        return length;
+    }
+
+    //set
+    public double getWidth (){
+        System.out.println("And its width ?");
+        double width = scanner.nextDouble();
+        return width;
+    }
+
+    public double calculateArea (){
         double area  = this.length * this.width;
         return area;
     }
 
-    public double calculatePerimeter (double length, double width){
-        double perimeter = 2 * (this.length + this.width);
+    public double calculatePerimeter (){
+        double perimeter = 2 * (length + width);
         return perimeter;
     }
 
