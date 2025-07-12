@@ -18,7 +18,7 @@ The Rectangle Class is a class that births rectangles
 it will have properties (values) and methods (metrics):
 Values: Length, Breadth or Width,
 Metrics: Area = L x W, Perimeter = 2 x (L + W)
-i also learned how the scanner object behaves when scanning tokens (words, numbers, lines)
+I also learned how the scanner object behaves when scanning tokens (words, numbers, lines)
 from methods such as:
 next(): what it reads: it'll read a single word (stop at space/newline)
 what it leaves: leaves the (\n) newline behind,
@@ -29,20 +29,29 @@ public class Rectangle {
    static Scanner scanner = new Scanner(System.in);
     public static void main (String[] args){
         String again;
+        Rectangle myRoom1 = Rectangle.createUserRectangleObject();
+        Rectangle myRoom2 = Rectangle.createUserRectangleObject();
         do {
-            Rectangle myRectangle = new Rectangle();
-            double perimeter = Math.ceil(myRectangle.calculatePerimeter());
-            System.out.println("Here are the properties of your Rectangle: " + "\n" +
-                    "Length: " +myRectangle.length + "\n" +
-                    "Width: " +myRectangle.width + "\n" +
+            calculateTheAreaOfTwoRooms(myRoom1, myRoom2);
+            System.out.println("DO YOU WANT TO GIVE IT ANOTHER TRY (Yes / No) ?");
+            scanner.nextLine();
+            again = scanner.nextLine().toLowerCase();
+        } while (again.equals("yes"));
+
+        do {
+            double perimeter = Math.ceil(myRoom1.calculatePerimeter());
+            System.out.println("Here are the properties of your 1st Room: " + "\n" +
+                    "Length: " +myRoom1.getLength() + "\n" +
+                    "Width: " +myRoom1.getWidth() + "\n" +
                     "Perimeter: " +perimeter);
             System.out.println("DO YOU WANT TO GIVE IT ANOTHER TRY (Yes / No) ?");
             scanner.nextLine();
             again = scanner.nextLine().toLowerCase();
         }while (again.equals("yes"));
+        scanner.close();
     }
-   private double length = getLength();
-    private double width = getWidth();
+   private double length;
+    private double width;
 
 
 //new change - 9:10pm 11th July
@@ -58,26 +67,55 @@ public class Rectangle {
      */
 
     //Default constructor
-    public Rectangle(){
+    private Rectangle (){
 
     }
 
-    //gets length
-    public double getLength(){
+    // using a factory method to create new object instances
+    public static Rectangle createUserRectangleObject (){
+        Rectangle r = new Rectangle();
+        r.setLength();
+        r.setWidth();
+        return r;
+    }
+
+    public static void calculateTheAreaOfTwoRooms (Rectangle r1, Rectangle r2){
+        double area1 = r1.calculateArea();
+        double area2 = r2.calculateArea();
+        double totalArea = Math.ceil( area1 + area2);
+        System.out.println("Here is the value of the space in your two rooms: " + "\n" +
+                "Room1: " + area1 + "m" + "\n" +
+                "Room2: " + area2 + "m" );
+        System.out.println("And your total space is: " + totalArea + "m2" + "\n" +
+                "");
+    }
+
+    //sets length
+    public void setLength(){
         System.out.println("Enter the values of your Rectangle, what's its length ?");
         double length = scanner.nextDouble();
-        return length;
+        this.length = length;
     }
 
     //set
-    public double getWidth (){
+    public void setWidth (){
         System.out.println("And its width ?");
         double width = scanner.nextDouble();
+        this.width = width;
+    }
+
+    //gets length
+    public double getLength (){
+        return length;
+    }
+
+    //gets width
+    public double getWidth(){
         return width;
     }
 
     public double calculateArea (){
-        double area  = this.length * this.width;
+        double area  = length * width;
         return area;
     }
 

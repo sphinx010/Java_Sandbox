@@ -31,7 +31,7 @@ public class GradeMessage {
                  i removed the former array method:
                  String[] message = { };
                  and replaced it a proper "ArrayList method" which is dynamic and flexible
-                 ArrayList<String> message = new ArrayList<>();
+                 ArrayList<String> message = new ArrayList<>();9
                  **********/
 
         /* Here a switch statement is used,
@@ -40,22 +40,22 @@ public class GradeMessage {
         */
         switch (studentGrade){
             case "F":
-                System.out.println(message.get(5));
+                System.out.println(message.get(0));
                 break;
             case "E":
-                System.out.println(message.get(4));
-                break;
-            case "D":
-                System.out.println(message.get(3));
-                break;
-            case "C":
-                System.out.println(message.get(2));
-                break;
-            case "B":
                 System.out.println(message.get(1));
                 break;
+            case "D":
+                System.out.println(message.get(2));
+                break;
+            case "C":
+                System.out.println(message.get(3));
+                break;
+            case "B":
+                System.out.println(message.get(4));
+                break;
             case "A":
-                System.out.println(message.get(0));
+                System.out.println(message.get(5));
                 break;
             default:
                 System.out.println("Student grades are from " + "A" + " through " + "F");
